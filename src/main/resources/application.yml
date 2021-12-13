@@ -1,0 +1,22 @@
+#spring:
+#  profiles.actives: development
+#  jpa:
+#    properties:
+#      hibernate:
+#        formatSql: true
+#        jdbc:
+#          lob:
+#            non-contextual-creation: true
+#    databasePlatform:
+#    show-sql: false
+#    hibernate:
+#      ddlAuto: update
+#      naming:
+#
+#  datasource:
+#    platform: postgres
+#    url: jdbc:postgresql://localhost:5432/ferreteria_cepillo
+#    username: postgres
+#    password: German
+#    driverClassName: org.postgresql.Driver
+#    initialization-mode: always
