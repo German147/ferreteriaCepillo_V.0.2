@@ -26,7 +26,7 @@ public class Main {
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");//create-drop//create//auto
         properties.setProperty("spring.jpa.show-sql", "true");
 
         return properties;
