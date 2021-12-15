@@ -1,0 +1,52 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ferreteria Cepillo - Menu Principal</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1  text align="center"> Ferreteria Cepillo</h1>
+<p></p>
+<div class="container">
+    <form method="post" action="/clientes">
+        <h2 class="form-signin-heading">Ingrese un cliente</h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Alta de Cliente</button>
+    </form>
+</div>
+<p></p>
+<div class="container">
+    <form  method="post" action="/employee">
+        <h2 class="form-signin-heading">Ingrese un empleado</h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Alta de Empleado</button>
+    </form>
+    <p></p>
+</div><div class="container">
+    <form  method="post" action="/product">
+        <h2 class="form-signin-heading">Ingrese un producto</h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Alta de un Producto</button>
+    </form>
+    <p></p>
+    <p></p>
+</div><div class="container">
+    <form  method="post" action="listadoClientes">
+        <h2 class="form-signin-heading">Listado de Clientes</h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Listado </button>
+    </form>
+    <p></p>
+    <p></p>
+</div><div class="container">
+    <form method="post" action="/api/v2/inicio">
+        <h2 class="form-signin-heading"></h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Salir</button>
+    </form>
+</div>
+</body></html>
