@@ -15,9 +15,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AndRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import static com.barreragerman.fr.c.war.ferreteriaCepillo_V02.security.ApplicationUSerPermission.CLIENTE_READ;
+import static com.barreragerman.fr.c.war.ferreteriaCepillo_V02.security.ApplicationUSerPermission.CLIENTE_WRITE;
+import static com.barreragerman.fr.c.war.ferreteriaCepillo_V02.security.ApplicationUserRole.ADMIN;
+import static com.barreragerman.fr.c.war.ferreteriaCepillo_V02.security.ApplicationUserRole.OWNER;
+
 @Configuration
 @EnableWebSecurity
-public class ApplicationSecurityConfig  extends WebSecurityConfigurerAdapter {
+public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
@@ -31,35 +36,57 @@ public class ApplicationSecurityConfig  extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","index.html","/css","/js/*")
+                .antMatchers("/", "index","/css/*","/js/*")
                 .permitAll()
-                .antMatchers(HttpMethod.GET,"/api/v1/cliente")
-                .permitAll()
+                .antMatchers(HttpMethod.GET,"/api/v2/menu").hasAnyRole(OWNER.name(),ADMIN.name())
+                .antMatchers(HttpMethod.GET, "/api/v2/menu").hasAuthority(CLIENTE_WRITE.getPermission())
+                .antMatchers(HttpMethod.POST, "/api/**").hasAuthority(CLIENTE_WRITE.getPermission())
+                .antMatchers(HttpMethod.DELETE, "/api/**").hasAuthority(CLIENTE_WRITE.getPermission())
+                .antMatchers(HttpMethod.PUT, "/api/**").hasAuthority(CLIENTE_WRITE.getPermission())
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/clientes",true)
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                //se sugiere en la documentacion que se use un metodo GET para hacer los logout
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"))
-                .logoutSuccessUrl("/login");
+                .defaultSuccessUrl("/api/v2/menu").permitAll();
+//                .and()
+//                .logout()
+//                .logoutUrl("/api/v2/salir")
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/salir","GET"))
+//                .logoutSuccessUrl("/index");
+//                /*.logoutSuccessUrl("/login");*/
+/* .and()
+//                .logout()
+//                    .logoutUrl("/logout")
+//                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"))*/
+                   // .loginPage("/api/v2/login").permitAll()
+//                .defaultSuccessUrl("/api/v2/menu",true);
+/*.logoutRequestMatcher(new AntPathRequestMatcher("/logout","GET"))*/
+
+
 
     }
 
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        UserDetails francoBlanginoUser = User.builder()
+
+        UserDetails renzoUser = User.builder()
+                .username("renzo")
+                .password(passwordEncoder.encode("renzo123"))
+               // .roles(ADMIN.name()) // ROLE_PATRON
+                .authorities(ADMIN.getGrantedAuthority())
+                .build();
+
+        UserDetails franco = User.builder()
                 .username("franco")
                 .password(passwordEncoder.encode("franco01"))
-                .roles("PATRON") // ROLE_PATRON
+               // .roles(ApplicationUserRole.OWNER.name())
+                .authorities(OWNER.getGrantedAuthority())
                 .build();
+
+
         return new InMemoryUserDetailsManager(
-                francoBlanginoUser
+                renzoUser, franco
         );
     }
 }
