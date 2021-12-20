@@ -47,7 +47,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/api/v2/menu").permitAll();
+                 .defaultSuccessUrl("/api/v2/menu",true);
 //                .and()
 //                .logout()
 //                .logoutUrl("/api/v2/salir")
