@@ -28,6 +28,7 @@ public class TemplateController {
     public String salirMenu(){
         return "salir";
     }
+
     @PostMapping("inicio")
     public String inicio(){
         return "inicio";
