@@ -17,34 +17,28 @@
 <h1  text align="center"> Ferreteria Cepillo</h1>
 <p></p>
 <div class="container">
-    <form method="post" action="/clientes">
-        <h2 class="form-signin-heading">Ingrese un cliente</h2>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"> Alta de Cliente</button>
+    <form class="form-signin" method="post" action="/clientes">
+        <h2 class="form-signin-heading"></h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar un Cliente</button>
     </form>
 </div>
 <p></p>
-<div class="container">
-    <form  method="post" action="/employee">
-        <h2 class="form-signin-heading">Ingrese un empleado</h2>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"> Alta de Empleado</button>
-    </form>
-    <p></p>
 </div><div class="container">
-    <form  method="post" action="/product">
-        <h2 class="form-signin-heading">Ingrese un producto</h2>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"> Alta de un Producto</button>
+    <form  class="form-signin" method="post" action="api/v1/cliente">
+        <h2 class="form-signin-heading"></h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Listar Clientes </button>
     </form>
     <p></p>
     <p></p>
 </div><div class="container">
-    <form  method="get" action="api/v1/cliente">
-        <h2 class="form-signin-heading">Listado de Clientes</h2>
-        <button class="btn btn-lg btn-primary btn-block" type="submit"> Listado </button>
+    <form  class="form-signin" method="post" action="/buscarClientes">
+        <h2 class="form-signin-heading"></h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"> Buscar Clientes </button>
     </form>
     <p></p>
     <p></p>
 </div><div class="container">
-    <form method="post" action="/api/v2/inicio">
+    <form  class="form-signin" method="post" action="/api/v2/inicio">
         <h2 class="form-signin-heading"></h2>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Salir</button>
     </form>

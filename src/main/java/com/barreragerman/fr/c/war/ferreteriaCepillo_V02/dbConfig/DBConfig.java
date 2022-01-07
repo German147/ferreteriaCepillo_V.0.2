@@ -18,7 +18,7 @@ import java.util.Properties;
 public class DBConfig {
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
 
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.postgresql.Driver");
@@ -28,12 +28,13 @@ public class DBConfig {
         return dataSourceBuilder.build();
 
     }
+
     @Bean
     public Properties dbProperties(Properties prop) {
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.setProperty("hibernate.hbm2ddl.auto", "auto");//create-drop//create//auto
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");//create-drop//create//auto
         properties.setProperty("spring.jpa.show-sql", "true");
 
         return properties;
