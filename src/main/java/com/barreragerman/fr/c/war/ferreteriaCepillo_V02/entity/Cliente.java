@@ -16,10 +16,20 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cliente")
     private Integer id;
+
+    @Column(name = "nombre")
     private String nombre;
+
+    @Column(name = "apellido")
     private String apellido;
+
+    @Column(name = "direccion")
     private String direccion;
+
+    @Column(name = "dni")
     private String dni;
+
+    @Column(name = "telefono")
     private String telefono;
 
 }

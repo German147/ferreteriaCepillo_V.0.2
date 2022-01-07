@@ -1,7 +1,9 @@
-package com.barreragerman.fr.c.war.ferreteriaCepillo_V02.service;
+package com.barreragerman.fr.c.war.ferreteriaCepillo_V02.service.ServiceImplement;
 
 import com.barreragerman.fr.c.war.ferreteriaCepillo_V02.entity.Cliente;
+import com.barreragerman.fr.c.war.ferreteriaCepillo_V02.exceptions.ClienteNotFoundExceptions;
 import com.barreragerman.fr.c.war.ferreteriaCepillo_V02.repository.ClienteRepository;
+import com.barreragerman.fr.c.war.ferreteriaCepillo_V02.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClienteServiceImpl implements ClienteService{
+public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -41,7 +43,7 @@ public class ClienteServiceImpl implements ClienteService{
                 clienteUpdate = clienteRepository.save(cliente);
             }
         } else {
-
+            throw new ClienteNotFoundExceptions("El Numero de Id " + id + " del producto No Existe");
         }
         return clienteUpdate;
     }
