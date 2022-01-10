@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ferreteria Cepillo</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2 th:text align="center">Editar un CLiente </h2>
+<div class="col-12">
+
+    <form th:object="${cliente}" th:action="@{/clientes/editar/} + ${cliente.id}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-group">
+            <label for="nombre">Escribir el nombre del Cliente</label>
+            <input autocomplete="off" autofocus th:field="*{nombre}" id="nombre"
+                   placeholder="Nombre" type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{nombre}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Escribir el apellido del Cliente</label>
+            <input autocomplete="off" autofocus th:field="*{apellido}" id="apellido"
+                   placeholder="Apellido" type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('apellido')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{apellido}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="direccion">Escribir la direccion del Cliente</label>
+            <input autocomplete="off" autofocus th:field="*{direccion}" id="direccion"
+                   placeholder="Direccion" type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('direccion')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{direccion}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="dni">Ingrese el DNI del Cliente</label>
+            <input autocomplete="off" th:field="*{dni}" id="dni" placeholder="DNI"
+                   type="number"
+                   class="form-control" th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{dni}"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefono">Ingresar el telefono del Cliente</label>
+            <input autocomplete="off" th:field="*{telefono}" id="telefono" placeholder="Telefono"
+                   type="text"
+                   class="form-control" th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''">
+            <div class="invalid-feedback" th:errors="*{telefono}"></div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Guardar</button>
+        &nbsp;<a class="btn btn-warning" th:href="@{/clientes/mostrar}">Ver todos</a>
+    </form>
+</div>
+</main>
+</body>
+</html>

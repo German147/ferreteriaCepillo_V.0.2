@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ferreteria Cepillo</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2 th:text align="center">Clientes</h2>
+<div class="col-12">
+    <div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+         th:text="${mensaje}"
+         class="alert">
+    </div>
+    <a class="btn btn-success mb-2" th:href="@{/clientes/agregar}">Agregar</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Direccion</th>
+                <th>DNI</th>
+                <th>Telefono</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cliente : ${cliente}">
+                <td th:text="${cliente.id}"></td>
+                <td th:text="${cliente.nombre}"></td>
+                <td th:text="${cliente.apellido}"></td>
+                <td th:text="${cliente.direccion}"></td>
+                <td th:text="${cliente.dni}"></td>
+                <td th:text="${cliente.telefono}"></td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{editar/} + ${cliente.id}">Editar <i
+                            class="fa fa-edit"></i></a>
+                </td>
+                <td>
+                    <form th:action="@{/clientes/eliminar}" method="post">
+                        <input type="hidden" name="id" th:value="${cliente.id}"/>
+                        <button type="submit" class="btn btn-danger"
+                                onclick="if (!(confirm('Are you sure you want to delete this cliente?'))) return false">Eliminar <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="btn btn-lg btn-primary mb-2" th:href="@{/api/v2/menu}">Inicio</a>
+</div>
+</main>
+</body>
+</html>
