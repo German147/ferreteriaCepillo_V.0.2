@@ -1,5 +1,5 @@
 # <h1> Customer  Desktop Control Application</h1>
-###### Desktop application created with SpringBoot, and Postgresql relational database
+###### Desktop application created with SpringBoot, and Postgresql relational database.
 <br/>
 
 ### Table of contents
