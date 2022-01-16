@@ -22,7 +22,7 @@ public class DBConfig {
 
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.postgresql.Driver");
-        dataSourceBuilder.url("jdbc:postgresql://localhost:5432/ferreteria_cepillo");
+        dataSourceBuilder.url("jdbc:postgresql://localhost:5432/cepillo");
         dataSourceBuilder.username("postgres");
         dataSourceBuilder.password("German");
         return dataSourceBuilder.build();
