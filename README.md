@@ -1,6 +1,6 @@
 # <h1> Customer  Desktop Control Application</h1>
-#####Desktop application created with SpringBoot, and Postgresql relational database.
-<br/>
+### SpringBoot Desktop application using Postgresql relational database.
+
 
 ### Table of contents
 * [General info](#general-info)
@@ -42,6 +42,10 @@ application.
    dataSourceBuilder.username("username");
    dataSourceBuilder.password("password");
 ```
+
+## Relational Mapping image
+![image](https://user-images.githubusercontent.com/69442805/149825539-c13a984a-7314-4b47-bd67-20ad0f16a80c.png)
+
 
 ### Author
 This repository was built using documentation on the internet.
